@@ -22,7 +22,7 @@ export class UsuariosLista {
     }
     // obtener list de usuarios
     public getLista(){
-        return this.lista;
+        return this.lista.filter(usuario => usuario.nombre !=='sin-nombre');
     }
     public getUsuario(id: string){
         return this.lista.find(usuario => usuario.id===id);

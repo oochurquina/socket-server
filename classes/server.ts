@@ -30,19 +30,21 @@ export default class Server {
 
         this.io.on('connection', cliente=>{
             // conectar cliente
-            socket.conectarCliente(cliente)
+            socket.conectarCliente(cliente,this.io);
             // configurar usuario            
-            socket.configurarUsuario(cliente);
+            socket.configurarUsuario(cliente, this.io);
             // console.log(cliente.id);
 
             // console.log('Cliente conectado');
             // cliente.on('disconnect',()=>{
             //     console.log('Cliente desconectado')
             // })
+            // obtener usuarios activos
+            socket.obtenerUsuarios(cliente,this.io)
             // recibir mensaje
             socket.mensaje(cliente,this.io);
             //desconectar
-            socket.desconectar(cliente);
+            socket.desconectar(cliente,this.io);
 
         });
     }
